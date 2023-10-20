@@ -14,3 +14,36 @@ export const swap = (arr: number[], i1: number, i2: number) => {
   arr[i2] = first;
 };
 
+/**
+ * Accepts two already sorted arrays and returns them
+ * merged into one single sorted array.
+ */
+export const mergeArrays = (arr1: number[], arr2: number[]) => {
+  const result: number[] = [];
+
+  let i = 0;
+  let j = 0;
+
+  while(i < arr1.length && j < arr2.length) {
+    if (arr1[i] < arr2[j]) {
+      result.push(arr1[i]);
+      i++;
+    } else {
+      // @ts-ignore
+      result.push(arr2[j]);
+      j++;
+    }
+  }
+
+  while (i < arr1.length) {
+    result.push(arr1[i]);
+    i++;
+  }
+
+  while (j < arr2.length) {
+    result.push(arr2[j]);
+    j++;
+  }
+
+  return result;
+};
